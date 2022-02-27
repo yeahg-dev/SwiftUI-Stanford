@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// data structure that behaves like a View
 struct ContentView: View {
     var emojis = ["🧀", "🍹", "🍔", "🍣", "🍮", "🍰", "🥪", "🍟", "🥨", "🫒", "🍏", "🥯", "🌮", "🍺", "🍷", "🥞", "🍡", "🧃", "🍨"]
     @State var emojiCount = 4 // 뷰에서 사용되면, 값이 변경될 때마다 뷰도 같이 rebuild됨
@@ -18,6 +19,7 @@ struct ContentView: View {
                     CardView(content: emoji)
                 }
             }
+            .foregroundColor(.red)
             Spacer()
             HStack {
                 remove
@@ -28,7 +30,6 @@ struct ContentView: View {
             .padding(.horizontal)
         }
         .padding()
-        .foregroundColor(.red)
     }
     
     var remove: some View {
