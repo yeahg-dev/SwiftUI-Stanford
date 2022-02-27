@@ -8,15 +8,47 @@
 import SwiftUI
 
 struct ContentView: View {
-    var emojis = ["🧀", "🍔", "🍣", "🍰"]
+    var emojis = ["🧀", "🍹", "🍔", "🍣", "🍮", "🍰", "🥪", "🍟", "🥨", "🫒", "🍏", "🥯", "🌮", "🍺", "🍷", "🥞", "🍡", "🧃", "🍨"]
+    @State var emojiCount = 4 // 뷰에서 사용되면, 값이 변경될 때마다 뷰도 같이 rebuild됨
+    
     var body: some View {
-        HStack {
-            ForEach(emojis, id: \.self) { emoji in
-                CardView(content: emoji)
+        VStack {
+            HStack {
+                ForEach(emojis[0..<emojiCount], id: \.self) { emoji in
+                    CardView(content: emoji)
+                }
             }
+            HStack {
+                remove
+                Spacer()
+                add
+            }
+            .padding(.horizontal)
         }
         .padding()
         .foregroundColor(.red)
+    }
+    
+    var remove: some View {
+        Button(action: {
+            emojiCount -= 1
+        }, label: {
+            VStack {
+                Text("Remove")
+                Text("Card")
+            }
+        })
+    }
+    
+    var add: some View {
+        Button(action: {
+            emojiCount += 1
+        }, label: {
+            VStack {
+                Text("Add")
+                Text("Card")
+            }
+        })
     }
 }
 
