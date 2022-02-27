@@ -18,11 +18,13 @@ struct ContentView: View {
                     CardView(content: emoji)
                 }
             }
+            Spacer()
             HStack {
                 remove
                 Spacer()
                 add
             }
+            .font(.largeTitle)
             .padding(.horizontal)
         }
         .padding()
@@ -34,8 +36,7 @@ struct ContentView: View {
             emojiCount -= 1
         }, label: {
             VStack {
-                Text("Remove")
-                Text("Card")
+               Image(systemName: "minus.rectangle.portrait")
             }
         })
     }
@@ -45,8 +46,7 @@ struct ContentView: View {
             emojiCount += 1
         }, label: {
             VStack {
-                Text("Add")
-                Text("Card")
+                Image(systemName: "plus.rectangle.portrait")
             }
         })
     }
