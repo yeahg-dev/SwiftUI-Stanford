@@ -32,23 +32,27 @@ struct ContentView: View {
     }
     
     var remove: some View {
-        Button(action: {
-            emojiCount -= 1
-        }, label: {
+        Button {
+            if emojiCount > 1 {
+             emojiCount -= 1
+            }
+        } label: {
             VStack {
                Image(systemName: "minus.rectangle.portrait")
             }
-        })
+        }
     }
     
     var add: some View {
-        Button(action: {
-            emojiCount += 1
-        }, label: {
+        Button {
+            if emojiCount < emojis.count {
+                emojiCount += 1
+            }
+        } label: {
             VStack {
                 Image(systemName: "plus.rectangle.portrait")
             }
-        })
+        }
     }
 }
 
