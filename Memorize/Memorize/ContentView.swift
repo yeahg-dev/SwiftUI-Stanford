@@ -10,11 +10,10 @@ import SwiftUI
 struct ContentView: View {
     var emojis = ["🧀", "🍔", "🍣", "🍰"]
     var body: some View {
-        HStack { 
-            CardView(content: emojis[0])
-            CardView(content: emojis[1])
-            CardView(content: emojis[2])
-            CardView(content: emojis[3])
+        HStack {
+            ForEach(emojis, id: \.self) { emoji in
+                CardView(content: emoji)
+            }
         }
         .padding()
         .foregroundColor(.red)
@@ -25,11 +24,10 @@ struct ContentView: View {
 struct CardView: View {
     var content: String
     // @State 임시방편
-    // Bool값이 변경되면 뷰를 다시 그려준다
+    // Bool값이 변경되면 뷰를 다시 그려준다(rebuild)
     @State var isFaceUp: Bool = true // 🌟 뷰가 상태(Model value)를 갖고 있다.
                        // ➡️ 자율적으로 모양을 바꿀 수 있다.
                        // ❓뷰와 비지니스 로직간의 결합성이 높아져 재사용성이 줄어드는게 아닐까?
-                   
     
     var body: some View {
         ZStack(content: {
